@@ -23,6 +23,14 @@ Parameters:
 #       Type: Canary10Percent5Minutes
 
 Resources:
+  HellowWorldPerms:
+    Type: AWS::Lambda::Permission
+    DependsOn:
+      - HelloWorld
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref HelloWorld
+      Principal: apigateway.amazonaws.com
   HelloWorld:
     Type: AWS::Serverless::Function
     Properties:
